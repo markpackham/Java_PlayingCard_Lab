@@ -59,4 +59,7 @@ public class Deck {
     }
 
 
+    public Card getTopCard() {
+        return this.cards.get(0);
+    }
 }
