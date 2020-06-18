@@ -11,9 +11,12 @@ public class Player {
     public String getName(){
         return this.name;
     }
+    public Card getCard(){
+        return this.card;
+    }
 
-    public void addCard(Card card){
-        this.card
+    public Card addCard(Card card){
+        return this.card = card;
     }
 
 

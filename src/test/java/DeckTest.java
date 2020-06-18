@@ -13,46 +13,54 @@ public class DeckTest {
     Card card2;
     Card card3;
     Card card4;
+    Player player1;
+    Player player2;
+    Player player3;
+    Player player4;
 
     @Before
-    public void before(){
+    public void before() {
         deck1 = new Deck();
         deck2 = new Deck();
         card1 = new Card(SuitType.HEARTS, RankType.QUEEN);
         card2 = new Card(SuitType.SPADES, RankType.ACE);
         card3 = new Card(SuitType.SPADES, RankType.KING);
         card4 = new Card(SuitType.DIAMONDS, RankType.TWO);
+        player1 = new Player("John");
+        player2 = new Player("Paul");
+        player3 = new Player("George");
+        player4 = new Player("Ringo");
     }
 
     @Test
-    public void deckStartsAt0(){
+    public void deckStartsAt0() {
         assertEquals(0, deck1.getSize());
     }
 
     @Test
-    public void canAddCard(){
+    public void canAddCard() {
         deck1.addCard(card1);
-        assertEquals(1, deck1.getSize() );
+        assertEquals(1, deck1.getSize());
     }
 
     @Test
-    public void canGetDeck__Unshuffled(){
+    public void canGetDeck__Unshuffled() {
         ArrayList<Card> expected = new ArrayList<>();
         expected.add(card1);
         expected.add(card2);
         expected.add(card3);
         expected.add(card4);
 
-        deck1.addCard(card1);
-        deck1.addCard(card2);
-        deck1.addCard(card3);
-        deck1.addCard(card4);
+//        deck1.addCard(card1);
+//        deck1.addCard(card2);
+//        deck1.addCard(card3);
+//        deck1.addCard(card4);
 
         assertEquals(expected, deck1.getCards());
     }
 
     @Test
-    public void canGetDeck__Shuffled(){
+    public void canGetDeck__Shuffled() {
         ArrayList<Card> expected = new ArrayList<>();
         expected.add(card1);
         expected.add(card2);
@@ -70,14 +78,25 @@ public class DeckTest {
     }
 
     @Test
-    public void canDealCard(){
+    public void canDealCard() {
         deck1.addCard(card1);
         deck1.addCard(card2);
         deck1.addCard(card3);
 
-        deck1.dealCard(card1);
+        deck1.dealCard(card1, player1);
 
         assertEquals(2, deck1.getSize());
+    }
+
+    @Test
+    public void dealCardAddsToPlayer() {
+        deck1.addCard(card1);
+        deck1.addCard(card2);
+        deck1.addCard(card3);
+
+        deck1.dealCard(card1, player1);
+
+        assertEquals(card1, player1.getCard());
     }
 
 }
