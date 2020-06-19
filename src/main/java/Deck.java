@@ -4,36 +4,20 @@ import java.util.Collections;
 
 public class Deck {
     private ArrayList<Card> cards;
-    private SuitType[] suits = {
-            SuitType.HEARTS,
-            SuitType.DIAMONDS,
-            SuitType.CLUBS,
-            SuitType.DIAMONDS
-    };
-    private RankType[] ranks = {
-            RankType.ACE,
-            RankType.TWO,
-            RankType.THREE,
-            RankType.FOUR,
-            RankType.FIVE,
-            RankType.SIX,
-            RankType.SEVEN,
-            RankType.EIGHT,
-            RankType.NINE,
-            RankType.TEN,
-            RankType.JACK,
-            RankType.QUEEN,
-            RankType.KING
-    };
-
-
+it
     public Deck(){
         this.cards = new ArrayList<Card>();
-        for (int suits_index = 0; suits_index < 4; suits_index++){
-            for (int rank_index = 0; rank_index < 13; rank_index++){
-                this.cards.add(new Card(suits[suits_index], ranks[rank_index]));
+        for (SuitType suit : SuitType.values()){
+            for (RankType rank : RankType.values()){
+                this.cards.add(new Card(suit, rank));
             }
         }
+
+//        for (int suits_index = 0; suits_index < 4; suits_index++){
+//            for (int rank_index = 0; rank_index < 13; rank_index++){
+//                this.cards.add(new Card(suits[suits_index], ranks[rank_index]));
+//            }
+//        }
     }
 
     public int getSize() {
